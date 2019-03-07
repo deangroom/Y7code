@@ -1,0 +1,17 @@
+int sensorPin = A5;        // select the input pin for the potentiometer on the ThinkerShield
+int ledPin = 12;           // select the pin for the LED – 12 on the ThinkerShield
+int sensorValue = 0;       // variable to store the value coming from the sensor
+void setup() {
+pinMode(ledPin, OUTPUT);    // declare the ledPin as an OUTPUT
+pinMode(sensorPin, INPUT);  // declare the sensorPin as an INPUT
+Serial.begin(9600);         //tell the software to begin transmitting the value given below
+}
+void loop() {
+sensorValue = analogRead(sensorPin);  // read the value from the sensor
+digitalWrite(ledPin, HIGH);           // turn the ledPin on 
+delay(sensorValue);                   // stop the program for some time 
+digitalWrite(ledPin, LOW);            // turn the ledPin off 
+delay(sensorValue);                   // stop the program for some time
+Serial.print("The sensor value is: ");  // in serial monitor write “The sensor value is: ”
+Serial.println(sensorValue);            // put the sensor value in serial monitor after the wording given in the line above this.
+}
